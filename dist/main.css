@@ -1,0 +1,23 @@
+.weather-card-info {
+  color: #323232;
+  padding: 16px !important; }
+  .weather-card-info-item {
+    display: inline-block;
+    margin: 0;
+    padding-right: 5px; }
+    .weather-card-info-item.temp {
+      font-size: 5em;
+      margin-top: -20px; }
+    .weather-card-info-item.degree {
+      vertical-align: top; }
+    .weather-card-info-item.icon {
+      float: right;
+      height: 70px;
+      width: 70px;
+      background: #2196f3;
+      padding: 5px;
+      border-radius: 50%; }
+      .weather-card-info-item.icon .md-icon {
+        font-size: 4em; }
+.weather-client .w-icon.wi {
+  font-size: 50px; }

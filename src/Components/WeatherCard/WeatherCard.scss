@@ -1,0 +1,38 @@
+@import "../../styles/index.scss";
+
+.weather-card {
+
+	&-info {
+		color: #323232;
+		padding: 16px !important;
+
+		&-item {
+			display: inline-block;
+			margin: 0;
+			padding-right: 5px;
+
+			&.temp {
+				font-size: 5em;
+				margin-top: -20px;
+			}
+
+			&.degree {
+				vertical-align: top;
+			}
+
+			&.icon {
+				float: right;
+				height: 70px;
+				width: 70px;
+				background: $md-blue-500;
+				padding: 5px;
+				border-radius: 50%;
+
+				.md-icon {
+					font-size: 4em;
+				}
+			}
+		}
+	}
+
+}
