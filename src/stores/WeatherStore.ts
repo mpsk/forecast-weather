@@ -1,6 +1,6 @@
 import {observable, action} from 'mobx';
 
-import {ForecastDataMain, ForecastDataWind, ForecastDataDesc} from '../service/WeatherAPI';
+import {ForecastDataMain, ForecastDataWind, ForecastDataDesc} from '../services/WeatherApi';
 
 export type ForecastDataMain = ForecastDataMain;
 export type ForecastDataWind = ForecastDataWind;

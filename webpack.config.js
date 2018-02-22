@@ -10,10 +10,8 @@ const TARGET_POINT = process.env.TARGET_POINT;
 const NODE_MODE = process.env.NODE_ENV || 'development'; 
 const IS_PROD = NODE_MODE === 'production';
 
-const INPUT_CLIENT = path.resolve(__dirname, './src/index.ts');
+const INPUT_CLIENT = path.resolve(__dirname, './src/app.ts');
 const INPUT_SERVER = path.resolve(__dirname, './server/server.ts');
-// const INPUT_CLIENT = './src/index.ts';
-// const INPUT_SERVER = path.resolve(__dirname, './server/server.ts');
 const OUT_PATH = 'dist';
 
 const clientPolyfill = ['whatwg-fetch'];
@@ -95,7 +93,7 @@ const serverConfig = {
 		filename: 'server.bundle.js',
 		libraryTarget: 'commonjs'
 	},
-	devtool: 'eval-source-map',
+    devtool: IS_PROD ? false : 'eval-source-map',
     module: {rules: rules},
     watchOptions: watchOptions,
 	resolve: resolve,
