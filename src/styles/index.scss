@@ -1,4 +1,28 @@
 // @import "../../node_modules/react-md/src/scss/bundles/teal-blue.scss";
-@import "../../node_modules/react-md/src/scss/_colors.scss";
-
+// @import "../../node_modules/react-md/src/scss/_colors.scss";
 // https://react-md.mlaursen.com/customization/colors
+
+@import '~react-md/src/scss/_colors.scss';
+@import '~react-md/src/scss/_react-md.scss';
+
+$md-media-included: true;
+$md-mobile-min-width: 320px !default;
+$md-mobile-media: 'screen and (min-width: #{$md-mobile-min-width})' !default;
+@include react-md-buttons;
+
+@media #{$md-mobile-media} {
+    @include react-md-buttons-mobile;
+}
+
+@media #{$md-desktop-media} {
+    @include react-md-buttons-desktop;
+}
+
+// Required to be placed in correct media queries -- Only outputs styles
+@include react-md-drawers-mobile;
+@include react-md-drawers-mobile-landscape;
+@include react-md-drawers-tablet;
+@include react-md-drawers-desktop;
+
+// Places all of the above in the corresponding media queries
+@include react-md-drawers-media;

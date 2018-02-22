@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { FontIcon } from 'react-md'
 
+import './WeatherIcon.scss';
+
 interface WeatherIconProps {
 	icon?: string;
 	iconId?: number;
@@ -11,6 +13,7 @@ interface WeatherIconProps {
 const WeatherIcon: React.SFC<WeatherIconProps> = (props) => {
 	const {icon, iconId} = props;
 	const iconProps = {
+		className: 'WeatherIcon',
 		iconClassName: iconId ? `wi wi-${weatherIcons(iconId)}` : `wi wi-${icon})}`
 	}
 	return (
@@ -27,9 +30,11 @@ export default WeatherIcon;
 function weatherIcons(iconId) {
 	let icon = code()[iconId].icon;
 	// If we are not in the ranges mentioned above, add a day/night prefix.
-	// if (!(iconId > 699 && iconId < 800) && !(iconId > 899 && iconId < 1000)) {
-	// 	icon = `day-${icon}`;
-	// }
+	if (!(iconId > 699 && iconId < 800) && !(iconId > 899 && iconId < 1000)) {
+		// icon = `day-${icon}`;
+		icon += ' day';
+	}
+	
 	return icon;
 
 	function code() {

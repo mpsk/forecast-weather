@@ -22,14 +22,25 @@
 
 			&.icon {
 				float: right;
-				height: 70px;
-				width: 70px;
+				height: 75px;
+				width: 75px;
 				background: $md-blue-500;
 				padding: 5px;
+				margin-top: -5px;
 				border-radius: 50%;
 
-				.md-icon {
-					font-size: 4em;
+				.WeatherIcon {
+					font-size: 5vw;
+					width: 100%;
+					height: 100%;
+
+					&.day {
+						color: aliceblue;
+					}
+					
+					&::before {
+						line-height: 65px;
+					}
 				}
 			}
 		}
