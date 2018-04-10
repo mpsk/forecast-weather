@@ -12,12 +12,14 @@ const queryParams = (params: Object) => (isEmpty(params) ? '' : ('?' + qs.string
 const urlWithParams = (url, params) => (url + queryParams(params));
 
 interface RequestOptions extends RequestInit {
+    body?: RequestInit['body'] | any; // Object
 	[key: string]: any;
 }
 
 export default class Rest {
     static get = get;
     static getp = getp;
+    static post = post;
     get = get;
     getp = getp;
     post = post;

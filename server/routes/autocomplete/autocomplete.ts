@@ -1,22 +1,22 @@
 'use strict';
-
 import {Router, Request} from 'express';
 import * as fetch from 'node-fetch';
-import * as requestIp from 'request-ip';
 
-import {SERVICE} from '../../SETTINGS';
+import { SERVICE } from '../../SETTINGS';
 
 const routes = Router();
 
-routes.get('/ip', (req, resp, next) => onGetGeoIp(req, resp));
+routes.post('/city', (req, resp, next) => onGetCity(req, resp));
 
 export default routes;
 
-function onGetGeoIp(req, resp) {
-	const clientIp = requestIp.getClientIp(req);
-	const ipApi = `${SERVICE.IP_LOCATION}/json/${clientIp}`;
-	
-	fetch(ipApi, {
+// SERVICE.GEO_COMPLETE
+// http://gd.geobytes.com/AutoCompleteCity?q=Kie
+
+function onGetCity(req, resp) {
+    const {city} = req.body;
+	const URL = `${SERVICE.GEO_COMPLETE}/AutoCompleteCity?q=${city}`;
+	fetch(URL, {
 			method: 'GET',
 			credentials: 'include'
 		})

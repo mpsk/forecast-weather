@@ -1,20 +1,14 @@
 import Rest from './Rest';
-import {LOCATION, REST} from '../SETTINGS';
+import {REST} from '../SETTINGS';
 
 export type LatLog = {
-    latitude: number;
-    longitude: number;   
+    lat: number;
+    lon: number;   
 }
 
 export type LocationInfo = LatLog & {
     city: string;
-    country_code: string;
-    country_name: string;
-    ip: string;
-    region_code: string;
-    region_name: string;
-    time_zone: string;
-    zip_code: string;
+    country: string;
 }
 
 export default class LocationPosition {
@@ -24,27 +18,19 @@ export default class LocationPosition {
 	constructor() {
 		this._rest = new Rest();
     }
-    
-    getNativePosition(): Promise<LatLog> {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(
-                (data) => onSuccess(resolve, data),
-                (error) => reject(error)
-            );
-        });
 
-        function onSuccess(resolve, data: Position) {
-            resolve({
-                latitude: data.coords.latitude,
-                longitude: data.coords.longitude
+	getServiceIpPosition(): Promise<LocationInfo> {
+		return this._rest
+            .get(REST.LOCATION_IP)
+            .then((data) => {
+                return data.status !== 'fail' ? data : this.getIpApiLocation()
             });
-        }
     }
 
-	getServicePosition(): Promise<LocationInfo> {
-		return this._rest
-			.get(REST.LOCATION_IP)
-            .then((data: LocationInfo) => data);
+    getIpApiLocation(): Promise<LocationInfo> {
+        return this._rest
+            .get('http://ip-api.com/json')
+            .then((data) => (data as LocationInfo))
     }
     
     post() {

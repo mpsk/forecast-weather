@@ -286,7 +286,7 @@ function weatherIcons(iconId) {
 
 			"800": {
 				"label": "clear sky",
-				"icon": "sunny"
+				"icon": "day-sunny"
 			},
 
 			"801": {
@@ -347,7 +347,7 @@ function weatherIcons(iconId) {
 
 			"951": {
 				"label": "calm",
-				"icon": "sunny"
+				"icon": "day-sunny"
 			},
 
 			"952": {

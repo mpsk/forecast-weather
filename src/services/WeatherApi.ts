@@ -58,7 +58,8 @@ export default class WeatherApi {
 			lat: latitude,
 			lon: longitude
 		});
-		return this._rest.get(uri, opts)
+		return this._rest
+			.get(uri, opts)
 			.then((resp: ForecastData) => (resp));
 	}
 
@@ -71,8 +72,29 @@ export default class WeatherApi {
 			lat: latitude,
 			lon: longitude
 		});
-		return this._rest.get(uri, opts)
-		.then((resp: ForecastData) => (resp));
+		return this._rest
+			.get(uri, opts)
+			.then((resp: ForecastData) => (resp));
+	}
+
+	getCityCurrent(city: string, country: string) {
+		const uri = url('/weather');
+		const opts = createOpts({
+			q: [city, country].join(',')
+		});
+		return this._rest
+			.get(uri, opts)
+			.then((resp: ForecastData) => (resp));
+	}
+
+	getCityForecast(city: string, country: string) {
+		const uri = url('/forecast');
+		const opts = createOpts({
+			q: [city, country].join(',')
+		});
+		return this._rest
+			.get(uri, opts)
+			.then((resp: ForecastData) => (resp));
 	}
 
 };

@@ -1,7 +1,11 @@
+'use strict';
+
 import * as React from 'react';
-import { Card, CardTitle, CardText, Slider } from 'react-md';
+import {Provider} from 'mobx-react';
+import { Card, CardTitle, CardText, Slider, Toolbar, TextField } from 'react-md';
 
 import {Stores} from './stores';
+import TopBarMenu from './components/TopBarMenu/TopBarMenu';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 
 import './Application.scss';
@@ -11,17 +15,13 @@ interface AppProps {
 }
 
 const Application = (props: AppProps) => {
-    const {stores} = props;
-    const weatherProps = {
-        city: stores.app.city,
-        country: stores.app.country,
-        weather: stores.weather
-    };
-
     return (
-        <div className='weather-client'>
-            <WeatherCard {...weatherProps} />
-        </div>
+        <Provider {...props.stores}>
+            <div className='Application'>
+                <TopBarMenu />
+                <WeatherCard />
+            </div>
+        </Provider>
     );
 }
 

@@ -5,6 +5,7 @@ import * as path from 'path';
 import * as http from 'http';
 import * as fs from 'fs';
 import * as os from 'os';
+import * as bodyParser from 'body-parser';
 const yargs = require('yargs');
 
 import routes from './routes';
@@ -16,6 +17,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(express.static('dist'));
+app.use(bodyParser.json());
 app.use(routes);
 
 server.listen(PORT, () => onStart(PORT));

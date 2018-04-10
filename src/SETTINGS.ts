@@ -6,11 +6,8 @@ const SETTINGS = {
 	},
 
 	REST: {
-		LOCATION_IP: 'location/ip'
-	},
-
-	LOCATION: {
-		HOST: 'http://freegeoip.net/json/'
+		LOCATION_IP: 'location/ip',
+		SEARCH_CITY: 'autocomplete/city'
 	}
 
 };
